@@ -34,18 +34,26 @@ docker-compose up -d
 ```
 yarn start:dev
 ```
-   
-11. Reconstruir la base de datos con la semilla
+8.  Reconstruir la base de datos con la semilla
 
 ```
 http://localhost:3000/api/v2/seed
+```
+# Production Build
+
+1. Crear el archivo ```.env.prod```
+2. Llenar las variables de entorno definidas en el ```.env.template```
+3. Crear la nueva imagen
+
+```
+docker-compose -f docker-compose.prod.yaml --env-file .env.prod up --build
 ```
 # Stack Usado
 * MongoDB
 * Nest
 
 # Notas
-Heroku redeply sin cambios:
+Heroku redeploy sin cambios:
 ```
 git commit --allow-empty -m "Trigger Heroku deploy"
 git push heroku <master | main>
